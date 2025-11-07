@@ -17,8 +17,8 @@ jobs:
       - name: Update branch
         run: |
           cd "$REPO_PATH"
-          git fetch
-          git checkout "refs/heads/$RELEASE_BRANCH_NAME"
+          git fetch --all --tags
+          git checkout -B "$RELEASE_BRANCH_NAME" "origin/$RELEASE_BRANCH_NAME"
           git pull origin "$RELEASE_BRANCH_NAME"
 
       - name: Verify current branch
