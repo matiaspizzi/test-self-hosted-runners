@@ -23,6 +23,7 @@ jobs:
       # Verify
       - name: Verificar el Tag (Usando la variable de ambiente)
         run: |
-          echo "Workflow triggered checkout with branch: $RELEASE_BRANCH_NAME"
-          echo "Current branch: "
-          git branch | grep '*' | head -n 1
+          echo "Workflow triggered checkout to branch: $RELEASE_BRANCH_NAME"
+          CURRENT_BRANCH=$(git branch | grep '*' | head -n 1)
+          echo "Current branch: $CURRENT_BRANCH"
+          
