@@ -16,14 +16,11 @@ jobs:
     steps:
       - name: Update branch
         run: |
+          echo "Workflow triggered checkout to branch: $RELEASE_BRANCH_NAME"
           cd "$REPO_PATH"
           git fetch --all --tags
           git checkout -B "$RELEASE_BRANCH_NAME" "origin/$RELEASE_BRANCH_NAME"
           git pull origin "$RELEASE_BRANCH_NAME"
-
-      - name: Verify current branch
-        run: |
-          echo "Workflow triggered checkout to branch: $RELEASE_BRANCH_NAME"
           CURRENT_BRANCH=$(git branch | grep '*' | head -n 1)
           echo "Current branch: $CURRENT_BRANCH"
           
